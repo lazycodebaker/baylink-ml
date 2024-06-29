@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd 
 from prophet import Prophet
 import streamlit as st
-import os
-import math
+import os 
 
 def install_requirements():
     os.system('pip3 install -r requirements.txt')
@@ -17,6 +16,9 @@ def load_data():
     orders = orders[['Product Name','Qty','Invoice Date']]
 
     return orders
+
+def abs(x):
+    return np.abs(x)
 
 def preprocess_data(orders): 
     orders['Qty'].fillna(orders['Qty'].mean(), inplace=True)
@@ -77,7 +79,7 @@ def predict_next_30_days(product_name, product_models,orders):
         
         next_30_days = forecast[['ds', 'yhat']].tail(30)
  
-        orders_sum = math.abs(next_30_days['yhat'].sum())
+        orders_sum = abs(next_30_days['yhat'].sum())
         st.write(f'Predicted next 30 days: {orders_sum}')
 
         fig2, ax = plt.subplots(figsize=(10, 6))
