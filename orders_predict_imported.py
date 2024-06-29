@@ -80,7 +80,6 @@ def predict_next_30_days(product_name, product_models,orders):
         next_30_days = forecast[['ds', 'yhat']].tail(30)
  
         orders_sum = abs(next_30_days['yhat'].sum())
-        st.write(f'Predicted next 30 days: {orders_sum}')
 
         fig2, ax = plt.subplots(figsize=(10, 6))
         ax.plot(next_30_days['ds'], next_30_days['yhat'], marker='o', linestyle='-', color='b')
@@ -90,7 +89,7 @@ def predict_next_30_days(product_name, product_models,orders):
         ax.grid(True)
         plt.xticks(rotation=45)
         
-        return fig1, fig2, next_30_days
+        return fig1, fig2, next_30_days , orders_sum
     else:
         st.write(f"Product '{product_name}' not found in the data.")
         return None, None, None
@@ -106,12 +105,14 @@ def main():
     product_name = st.selectbox("Select a Product", products)
     
     if product_name:
-        fig1, fig2, predictions  = predict_next_30_days(product_name, product_models,orders)
+        fig1, fig2, predictions , orders_sum  = predict_next_30_days(product_name, product_models,orders)
         if fig1 and fig2:
             st.write("Forecast for the next 30 days:")
             st.pyplot(fig1)
             st.pyplot(fig2)
             st.write(predictions)
+
+        st.write(f'Predicted next 30 days: {orders_sum}')
 
 if __name__ == "__main__":
     orders = load_data()
