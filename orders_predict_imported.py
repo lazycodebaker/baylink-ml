@@ -21,7 +21,7 @@ def abs(x):
     return np.abs(x)
 
 def preprocess_data(orders): 
-    orders['Qty'].fillna(orders['Qty'].mean(), inplace=True)
+    orders['Qty'] = orders['Qty'].fillna(orders['Qty'].mean(), inplace=False)
     
     q_low = orders['Qty'].quantile(0.01)
     q_high = orders['Qty'].quantile(0.99)
