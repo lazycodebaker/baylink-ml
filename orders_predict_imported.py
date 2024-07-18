@@ -9,8 +9,9 @@ import os
 def install_requirements():
     os.system('pip3 install -r requirements.txt')
 
-def load_data():
-    orders = pd.read_excel("orders.xlsx")   
+
+def load_data(path):
+    orders = pd.read_excel(path)   
     orders['Invoice Date'] = pd.to_datetime(orders['Invoice Date'])
     orders = preprocess_data(orders) 
     orders = orders[['Product Name','Qty','Invoice Date']]
@@ -46,9 +47,8 @@ def create_models(orders):
 
             model = Prophet(
                 weekly_seasonality=True,
-                daily_seasonality=True, 
-                changepoints=changepoints,
-                growth='logistic'
+                daily_seasonality=True,  
+                growth='linear',
             )
             
             model.add_seasonality(name='monthly', period=30.5, fourier_order=5)
@@ -96,10 +96,12 @@ def predict_next_30_days(product_name, product_models,orders):
 
         
 def main():
+    path = 'orders.xlsx'
+
     st.title("Product Quantity Forecast")
     st.write("Select a product to view the quantity forecast for the next 30 days.")
     
-    orders = load_data()
+    orders = load_data(path=path)
     product_models, products = create_models(orders)
     
     product_name = st.selectbox("Select a Product", products)
@@ -114,7 +116,6 @@ def main():
 
         st.write(f'Predicted next 30 days: {orders_sum}')
 
-if __name__ == "__main__":
-    orders = load_data()
+if __name__ == "__main__": 
     install_requirements()
     main()

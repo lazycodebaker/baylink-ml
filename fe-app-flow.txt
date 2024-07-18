@@ -1,0 +1,140 @@
+Page --> Deal 
+
+CREATE 
+Case 1 ( Deal does not exist )
+- Simple create deal 
+Case 2 (Deal exists )
+- Give a message that it already exists , if any change you can update 
+Case 3 (Deal exisits but is inactive)
+- Add a coloum for reason of re-activation and ask for admin permission on the same, if given re-activate the deal.
+READ 
+- Deal table is available to view the deals , using search and filters you can exactly check deals of a particular brand 
+UPDATE 
+Case 1 ( Admin )
+Direct Update 
+Case 2 (FE etc)
+Raise ticket for admin to update it 
+DELETE 
+Case 1 
+No delete ( Only super admin can)
+Case 2 
+Can make a deal inactive 
+- Need to put reason for that before making it inactive and then after ASM approval it can be done 
+Page --> ASM 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> FE 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Brands  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Products 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Orders 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Inventory
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Retailer 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Recon 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Product retailer deal ( Can we make this into deal table with deal items ??)
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Warehouse ( How to add location based things into this ??) 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Sales  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> SuperZone  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Zone  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Area 
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Purchase  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Payment  
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
+
+Page --> Invoice (Order)
+
+CREATE 
+READ 
+UPDATE 
+DELETE 
