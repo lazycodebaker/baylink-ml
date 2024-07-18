@@ -4,14 +4,16 @@ import streamlit as st
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingClassifier
 import joblib
+import os 
 
-model = joblib.load('brand_prediction_model_latest.pkl')
+data_path = os.path.abspath('brand_prediction_model_latest.pkl')
+
+model = joblib.load(data_path)
 data = pd.read_excel("latest.xlsx")
 data.drop('Unnamed: 0',axis=1,inplace=True)
 data.drop('mapping_score',axis=1,inplace=True)
 data.dropna(inplace=True)
 
-import os 
 
 def install_requirements():
     os.system('pip3 install -r requirements.txt')
@@ -146,7 +148,7 @@ def main():
     product_sub_category = st.selectbox('Product Sub Category',['RTE & Instant Food mixes', 'Pickles, Jams and Ketchups', 'Spices and masala', 'Snacks and namkeen', 'Chocolate, Buiscuits and Cookies', 'Bakery and confectionary products', 'Juices, Soups','Milk based beverages', 'Carbonated and Energy Drinks', 'Tea & Coffee', 'Ayurvedic & Herbal, Health supplements', 'Fresh, Dried & Preserved Fruits', 'Pet Food','Nutraceuticals'  ])
     average_price_point = st.number_input('Average Price Point', min_value=0.0, step=0.01)
     shelf_life = st.number_input('Shelf Life', min_value=6, step=1)
-    product_dimensions = st.text_input('Product Dimensions')
+    product_dimensions = st.text_input('Product Dimensions -- L x W x H')
     special_requirements = st.selectbox('Special Requirements',['Yes', 'No'])
     ideal_store_types = st.selectbox('Ideal Store Types',['Medical', 'Grocery', 'Daily Needs', 'Paan Store','Confectionary', 'Bakery'])
     minimum_order_quantity = st.number_input('Minimum Order Quantity', min_value=10000, step=5000)
