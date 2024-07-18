@@ -168,7 +168,9 @@ def main():
     customer_reviews_ratings = st.number_input('Customer Reviews & Ratings', min_value=0.0, max_value=5.0, step=0.01)
     compliance_with_regulations = st.selectbox('Compliance with Regulations',['Yes', 'No'])
 
-    if st.button('Predict'):
+    btn = st.button('Predict')
+
+    if btn:
         brand_details = {
             'Funding_Amount': funding_amount,
             'Brand_Age': brand_age,
