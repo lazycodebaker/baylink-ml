@@ -233,5 +233,5 @@ def main():
         st.write('Predicted Quantity: ',s)
 
 if __name__ == '__main__':
-    install_requirements()
+    # install_requirements()
     main()
