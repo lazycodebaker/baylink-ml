@@ -236,7 +236,7 @@ def main():
             if i > 80:
                 s +=1 
 
-        st.write(retailer_threshold_data[retailer_threshold_data['mapping_score'] > 80])
+        st.write(retailer_threshold_data[retailer_threshold_data['mapping_score'] > 80]['Store_ID'])
 
         st.success(f"Number of stores your brand can be placed are : {s}")
 
