@@ -149,6 +149,7 @@ def main():
     product_sub_category = st.selectbox('Product Sub Category',['RTE & Instant Food mixes', 'Pickles, Jams and Ketchups', 'Spices and masala', 'Snacks and namkeen', 'Chocolate, Buiscuits and Cookies', 'Bakery and confectionary products', 'Juices, Soups','Milk based beverages', 'Carbonated and Energy Drinks', 'Tea & Coffee', 'Ayurvedic & Herbal, Health supplements', 'Fresh, Dried & Preserved Fruits', 'Pet Food','Nutraceuticals'  ])
     average_price_point = st.number_input('Average Price Point', min_value=0.0, step=0.01)
     shelf_life = st.number_input('Shelf Life', min_value=6, step=1)
+    target_customer_age  = st.selectbox('Target Customer Age',['18-25', '26-35', '36-45', '46-55', '56+', '65+','all'])
     product_dimensions = st.text_input('Product Dimensions -- L x W x H')
     special_requirements = st.selectbox('Special Requirements',['Yes', 'No'])
     ideal_store_types = st.selectbox('Ideal Store Types',['Medical', 'Grocery', 'Daily Needs', 'Paan Store','Confectionary', 'Bakery'])
