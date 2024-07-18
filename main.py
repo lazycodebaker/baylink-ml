@@ -229,14 +229,18 @@ def main():
         
         y_input_data = model.predict(input_brand)
 
-        retailer_threshold_data['mapping_score'] = mapping_score[:200]
+        retailer_threshold_data['mapping_score'] = mapping_score
 
         s = 0
         for i in y_input_data:
-            if i > 80:
-                s +=1 
+            if i > 60:
+                s +=1
 
-        st.write(retailer_threshold_data[retailer_threshold_data['mapping_score'] > 80]['Store_ID'])
+        # give me all unique ids of stores only whose mapping_score is greater than 60
+        store_ids = retailer_threshold_data[retailer_threshold_data['mapping_score'] > 60]['Store_ID'].unique()
+        
+        st.write(f"Your brand can be placed in stores")
+        st.write(store_ids)
 
         st.success(f"Number of stores your brand can be placed are : {s}")
 
