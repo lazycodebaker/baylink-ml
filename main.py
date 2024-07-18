@@ -10,6 +10,7 @@ data_path = os.path.abspath('brand_prediction_model_latest.pkl')
 
 model = joblib.load(data_path)
 data = pd.read_excel("latest.xlsx")
+mapping_score = data['mapping_score']
 data.drop('Unnamed: 0',axis=1,inplace=True)
 data.drop('mapping_score',axis=1,inplace=True)
 data.dropna(inplace=True)
@@ -227,12 +228,16 @@ def main():
         
         y_input_data = model.predict(input_brand)
 
+        retailer_threshold_data['mapping_score'] = mapping_score[:200]
+
         s = 0
         for i in y_input_data:
             if i > 80:
                 s +=1 
 
-        st.write('Predicted Quantity: ',s)
+        st.write(retailer_threshold_data[retailer_threshold_data['mapping_score'] > 80])
+
+        st.success(f"Number of stores your brand can be placed are : {s}")
 
 if __name__ == '__main__':
     # install_requirements()
